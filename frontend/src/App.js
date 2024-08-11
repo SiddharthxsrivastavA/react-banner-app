@@ -1,23 +1,40 @@
-// App.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
 function App() {
   const [banner, setBanner] = useState({
-    description: 'Default Banner',
-    timer: 60,
-    link: 'https://example.com',
-    isVisible: true,
+    description: '',
+    timer: 0,
+    link: '',
+    isVisible: false,
   });
 
-  const [timeLeft, setTimeLeft] = useState(banner.timer);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBanner = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/api/banner');
+        if (response.data) {
+          setBanner(response.data);
+          setTimeLeft(response.data.timer);
+        }
+      } catch (error) {
+        console.error('Error fetching the banner data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBanner();
+  }, []);
 
   useEffect(() => {
     if (banner.isVisible && timeLeft > 0) {
       const timerId = setInterval(() => {
-        setTimeLeft(timeLeft - 1);
+        setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
       return () => clearInterval(timerId);
     }
@@ -42,14 +59,18 @@ function App() {
 
   return (
     <div className="container">
-      {banner.isVisible && timeLeft > 0 && (
-        <div className="banner">
-          <p>{banner.description}</p>
-          <p>Time left: {timeLeft} seconds</p>
-          <a href={banner.link} target="_blank" rel="noopener noreferrer">
-            Learn more
-          </a>
-        </div>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        banner.isVisible && timeLeft > 0 && (
+          <div className="banner">
+            <p>{banner.description}</p>
+            <p>Time left: {timeLeft} seconds</p>
+            <a href={banner.link} target="_blank" rel="noopener noreferrer">
+              Learn more
+            </a>
+          </div>
+        )
       )}
 
       <div className="dashboard">

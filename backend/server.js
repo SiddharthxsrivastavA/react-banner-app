@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'new_password',  // mera pswd
+  password: 'new_password',
   database: 'bannerDB',
   authPlugins: {
     mysql_native_password: () => () => mysql.authPlugins.mysql_native_password,
