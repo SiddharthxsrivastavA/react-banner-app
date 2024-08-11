@@ -1,0 +1,79 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Banner styling */
+.banner {
+  background: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.banner p {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.banner a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.banner a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard styling */
+.dashboard {
+  text-align: center;
+}
+
+.dashboard h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.dashboard input[type="text"],
+.dashboard input[type="number"] {
+  padding: 10px;
+  margin: 10px 0;
+  width: 70%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.dashboard input[type="checkbox"] {
+  margin: 20px 10px;
+  transform: scale(1.2);
+}
+
+.dashboard button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.dashboard button:hover {
+  background-color: #0056b3;
+}
