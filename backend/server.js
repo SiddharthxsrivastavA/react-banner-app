@@ -3,7 +3,17 @@ const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = 3001;
+//const port = process.env.PORT || 3001;
+
+app.use(cors(
+  {
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+));
+
 app.use(express.json());
 app.use(cors());
 
